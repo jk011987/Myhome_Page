@@ -1,0 +1,787 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- SEO -->
+  <title>GrowthMonk.in | Finance Clarity for Faster, Sustainable Business Growth</title>
+  <meta name="description" content="GrowthMonk helps founders and business owners turn financial confusion into decision-ready clarity—so you can grow with control, profitability, and confidence." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://growthmonk.in/" />
+  <meta name="theme-color" content="#0e1111" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="GrowthMonk.in | Finance Clarity for Faster, Sustainable Business Growth" />
+  <meta property="og:description" content="Turn financial confusion into decision-ready clarity—grow with control, profitability, and confidence." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://growthmonk.in/" />
+  <!-- <meta property="og:image" content="https://growthmonk.in/og.jpg" /> -->
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0d1111;
+      --bg2:#121818;
+      --paper:#e9e2d6;
+      --paper2:#d9cfbf;
+      --ink:#101414;
+      --text:#e7e4db;
+      --muted:#b8b3a7;
+      --gold:#c9a85a;
+      --gold2:#a98a3d;
+      --green:#2d3a33;
+      --green2:#1b2520;
+      --shadow: 0 18px 55px rgba(0,0,0,.55);
+      --soft: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius2: 26px;
+      --line: rgba(201,168,90,.35);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 650px at 85% 20%, rgba(201,168,90,.12), transparent 55%),
+        radial-gradient(900px 500px at 10% 30%, rgba(84,117,104,.10), transparent 55%),
+        linear-gradient(180deg, var(--bg) 0%, #0a0d0d 60%, #070909 100%);
+      overflow-x:hidden;
+    }
+
+    /* Subtle grain */
+    body:before{
+      content:"";
+      position:fixed; inset:0;
+      pointer-events:none;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+      mix-blend-mode:overlay;
+      opacity:.25;
+    }
+
+    a{color:inherit; text-decoration:none}
+    .container{width:min(1160px, 92vw); margin:0 auto}
+
+    /* Header */
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(10,13,13,.82), rgba(10,13,13,.58));
+      border-bottom: 1px solid rgba(201,168,90,.18);
+    }
+
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      letter-spacing:.3px;
+      min-width: 210px;
+    }
+
+    .mark{
+      width:38px; height:38px;
+      border-radius:999px;
+      display:grid; place-items:center;
+      background:
+        radial-gradient(circle at 35% 30%, rgba(201,168,90,.28), transparent 58%),
+        linear-gradient(180deg, rgba(45,58,51,.9), rgba(20,26,24,.9));
+      border:1px solid rgba(201,168,90,.35);
+      box-shadow: 0 10px 22px rgba(0,0,0,.35);
+    }
+    .mark svg{width:22px; height:22px; fill: var(--gold)}
+
+    .brand-name{
+      font-family:Cinzel, serif;
+      font-weight:700;
+      font-size:18px;
+      line-height:1.1;
+    }
+    .brand-name span{color: var(--gold)}
+    .brand-sub{
+      font-size:12px; color: rgba(231,228,219,.68);
+      margin-top:2px;
+    }
+
+    nav ul{
+      display:flex; gap:22px; list-style:none;
+      padding:0; margin:0;
+      align-items:center;
+      color: rgba(231,228,219,.84);
+      font-size:14px;
+    }
+    nav a{
+      position:relative;
+      padding:8px 2px;
+      opacity:.95;
+    }
+    nav a:hover{opacity:1}
+    nav a.active:after,
+    nav a:hover:after{
+      content:"";
+      position:absolute; left:0; right:0; bottom:-2px;
+      height:2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity:.9;
+    }
+
+    .cta{
+      display:flex; gap:10px; align-items:center;
+      min-width: 210px;
+      justify-content:flex-end;
+    }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:11px 14px;
+      border-radius: 999px;
+      border:1px solid rgba(201,168,90,.35);
+      background: linear-gradient(180deg, rgba(29,39,34,.95), rgba(20,28,24,.95));
+      color: rgba(231,228,219,.95);
+      box-shadow: 0 10px 26px rgba(0,0,0,.35);
+      font-weight:600;
+      font-size:13px;
+      letter-spacing:.2px;
+      transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(201,168,90,.55);
+      box-shadow: 0 14px 35px rgba(0,0,0,.45);
+    }
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(201,168,90,.18), rgba(29,39,34,.95));
+    }
+
+    .hamburger{display:none}
+
+    /* Hero */
+    .hero{
+      position:relative;
+      padding: 56px 0 36px;
+    }
+
+    .hero-wrap{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:28px;
+      align-items:center;
+    }
+
+    .hero-card{
+      position:relative;
+      padding: 30px 28px;
+      border-radius: var(--radius2);
+      border:1px solid rgba(201,168,90,.20);
+      background:
+        radial-gradient(900px 420px at 35% 25%, rgba(201,168,90,.12), transparent 60%),
+        linear-gradient(180deg, rgba(15,20,20,.82), rgba(10,13,13,.88));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .hero-card:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        linear-gradient(90deg, transparent, rgba(201,168,90,.10), transparent),
+        radial-gradient(circle at 18% 20%, rgba(201,168,90,.14), transparent 52%);
+      opacity:.8;
+      pointer-events:none;
+    }
+
+    .kicker{
+      display:inline-flex;
+      gap:10px; align-items:center;
+      font-size:12px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color: rgba(231,228,219,.72);
+    }
+    .kicker i{
+      width:10px; height:10px; border-radius:99px;
+      background: var(--gold);
+      box-shadow: 0 0 0 6px rgba(201,168,90,.12);
+      display:inline-block;
+    }
+
+    h1{
+      font-family:Cinzel, serif;
+      font-size: clamp(34px, 4vw, 52px);
+      line-height:1.06;
+      margin:14px 0 10px;
+      letter-spacing:.4px;
+    }
+    h1 .accent{color: var(--gold)}
+
+    .lead{
+      max-width: 62ch;
+      color: rgba(231,228,219,.82);
+      font-size: 16px;
+      line-height: 1.65;
+      margin: 0 0 18px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top: 16px;
+    }
+
+    .trustline{
+      margin-top:18px;
+      padding-top:18px;
+      border-top: 1px solid rgba(201,168,90,.18);
+      display:flex; gap:16px;
+      flex-wrap:wrap;
+      color: rgba(231,228,219,.72);
+      font-size: 13px;
+    }
+    .trustline b{color: rgba(231,228,219,.92)}
+
+    .hero-visual{
+      position:relative;
+      border-radius: var(--radius2);
+      overflow:hidden;
+      border:1px solid rgba(201,168,90,.20);
+      background:
+        linear-gradient(135deg, rgba(201,168,90,.08), rgba(18,24,24,.92)),
+        radial-gradient(650px 520px at 70% 35%, rgba(84,117,104,.20), transparent 55%);
+      box-shadow: var(--shadow);
+      min-height: 420px;
+    }
+
+    /* Replace this with your own image:
+       Put an image named hero.jpg next to index.html and uncomment below. */
+    .hero-visual::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(900px 420px at 60% 18%, rgba(201,168,90,.16), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.55));
+      pointer-events:none;
+    }
+    /* .hero-visual{
+      background-image: url("hero.jpg");
+      background-size: cover;
+      background-position: center;
+    } */
+
+    .visual-inner{
+      position:absolute; inset:0;
+      padding:18px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:flex-start;
+    }
+
+    .mini-card{
+      width:min(360px, 92%);
+      border-radius: 16px;
+      padding:14px 14px 12px;
+      border:1px solid rgba(201,168,90,.22);
+      background: linear-gradient(180deg, rgba(233,226,214,.08), rgba(15,20,20,.72));
+      backdrop-filter: blur(10px);
+      box-shadow: var(--soft);
+    }
+    .mini-title{
+      font-weight:700;
+      letter-spacing:.2px;
+      font-size:13px;
+      color: rgba(231,228,219,.92);
+      margin:0 0 6px;
+    }
+    .mini-text{
+      margin:0;
+      font-size:12.5px;
+      line-height:1.55;
+      color: rgba(231,228,219,.74);
+    }
+
+    /* Paper section */
+    .paper{
+      margin: 18px auto 0;
+      border-radius: calc(var(--radius2) + 6px);
+      background:
+        radial-gradient(900px 420px at 15% 10%, rgba(201,168,90,.10), transparent 60%),
+        linear-gradient(180deg, rgba(233,226,214,.96), rgba(217,207,191,.93));
+      color: var(--ink);
+      border: 1px solid rgba(201,168,90,.26);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .paper-inner{
+      padding: 34px 30px 26px;
+      position:relative;
+    }
+
+    .paper-inner:before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(1200px 600px at 80% 30%, rgba(0,0,0,.06), transparent 55%),
+        linear-gradient(90deg, rgba(201,168,90,.10), transparent 25%, transparent 75%, rgba(201,168,90,.07));
+      opacity:.8;
+      pointer-events:none;
+    }
+
+    .paper h2{
+      font-family:Cinzel, serif;
+      margin:0 0 10px;
+      font-size: clamp(24px, 2.2vw, 34px);
+      letter-spacing:.3px;
+    }
+
+    .paper p{
+      margin:0;
+      font-size: 16px;
+      line-height: 1.75;
+      color: rgba(16,20,20,.86);
+      max-width: 88ch;
+    }
+
+    .paper .highlight{
+      display:block;
+      margin-top: 14px;
+      font-weight: 700;
+      color: rgba(16,20,20,.92);
+    }
+
+    /* Dark section */
+    .section{
+      padding: 34px 0;
+    }
+
+    .section-title{
+      font-family:Cinzel, serif;
+      font-size: clamp(22px, 2.3vw, 32px);
+      margin: 0 0 10px;
+      letter-spacing:.3px;
+    }
+    .section-sub{
+      margin:0 0 18px;
+      color: rgba(231,228,219,.74);
+      line-height:1.65;
+      max-width: 78ch;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:18px;
+      align-items:start;
+    }
+
+    .panel{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(201,168,90,.20);
+      background:
+        radial-gradient(900px 420px at 20% 15%, rgba(201,168,90,.10), transparent 60%),
+        linear-gradient(180deg, rgba(15,20,20,.80), rgba(10,13,13,.88));
+      box-shadow: var(--soft);
+      overflow:hidden;
+    }
+
+    .panel .pad{padding: 22px}
+    .bullets{
+      margin: 0;
+      padding-left: 18px;
+      color: rgba(231,228,219,.78);
+      line-height: 1.8;
+      font-size: 14.5px;
+    }
+
+    .bullets li{
+      margin: 6px 0;
+    }
+
+    .stamp{
+      display:flex; gap:14px; flex-wrap:wrap;
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(201,168,90,.18);
+    }
+    .stamp .chip{
+      border-radius: 999px;
+      padding: 9px 12px;
+      border: 1px solid rgba(201,168,90,.22);
+      background: linear-gradient(180deg, rgba(201,168,90,.10), rgba(29,39,34,.55));
+      color: rgba(231,228,219,.86);
+      font-weight: 600;
+      font-size: 12.5px;
+      letter-spacing:.15px;
+    }
+
+    .icon-row{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .icon-card{
+      border-radius: 18px;
+      border: 1px solid rgba(201,168,90,.20);
+      background: linear-gradient(180deg, rgba(233,226,214,.06), rgba(10,13,13,.65));
+      padding: 14px 12px;
+      text-align:center;
+    }
+
+    .icon-card svg{
+      width:26px; height:26px;
+      fill: var(--gold);
+      opacity: .95;
+    }
+
+    .icon-card b{
+      display:block;
+      margin-top: 8px;
+      font-size: 13px;
+      color: rgba(231,228,219,.90);
+      letter-spacing:.2px;
+    }
+    .icon-card span{
+      display:block;
+      margin-top: 4px;
+      font-size: 12px;
+      color: rgba(231,228,219,.68);
+      line-height:1.45;
+    }
+
+    /* Footer */
+    footer{
+      padding: 26px 0 34px;
+      border-top: 1px solid rgba(201,168,90,.16);
+      background: linear-gradient(180deg, rgba(10,13,13,.2), rgba(10,13,13,.55));
+    }
+
+    .footer-wrap{
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      align-items:center;
+      flex-wrap:wrap;
+      color: rgba(231,228,219,.72);
+      font-size: 13px;
+    }
+    .footer-wrap a{color: rgba(231,228,219,.84)}
+    .footer-wrap a:hover{color: rgba(201,168,90,.95)}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      nav ul{gap:14px}
+      .hero-wrap{grid-template-columns:1fr}
+      .hero-visual{min-height: 340px}
+      .grid{grid-template-columns:1fr}
+      .icon-row{grid-template-columns: repeat(2, 1fr)}
+      .cta{min-width:auto}
+    }
+
+    @media (max-width: 740px){
+      nav ul{display:none}
+      .hamburger{display:inline-flex}
+      .brand{min-width:auto}
+      .hero{padding-top: 42px}
+      .paper-inner{padding: 26px 20px}
+      .hero-card{padding: 24px 20px}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="#">
+          <div class="mark" aria-hidden="true">
+            <!-- simple monk mark -->
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2c1.7 1.3 2.9 3 3.3 5 .4 2-.2 3.6-1.6 5 1.9.7 3.2 2.1 3.8 4.1.7 2.3.2 4.4-1.5 6.1H8c-1.7-1.7-2.2-3.8-1.5-6.1.6-2 1.9-3.4 3.8-4.1-1.4-1.4-2-3-1.6-5 .4-2 1.6-3.7 3.3-5z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="brand-name">Growth<span>Monk</span>.in</div>
+            <div class="brand-sub">Finance clarity for growth-stage decisions</div>
+          </div>
+        </a>
+
+        <nav aria-label="Primary">
+          <ul>
+            <li><a class="active" href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#why">Why GrowthMonk</a></li>
+            <li><a href="#resources">Resources</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="cta">
+          <a class="btn hamburger" href="#contact" aria-label="Open menu">Menu</a>
+          <a class="btn primary" href="#contact">Get in Touch</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="home" class="hero">
+    <div class="container">
+      <div class="hero-wrap">
+        <section class="hero-card" aria-label="Hero">
+          <div class="kicker"><i></i> Decision-ready finance</div>
+          <h1>Turn smarter decisions into <span class="accent">faster</span>, sustainable growth.</h1>
+          <p class="lead">
+            GrowthMonk helps founders, CEOs, and business owners translate numbers into clear direction—
+            improving profitability, reducing cash surprises, and making high-stakes moves with confidence.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#contact">Get Clarity</a>
+            <a class="btn" href="#why">See How We Work</a>
+          </div>
+
+          <div class="trustline" aria-label="Trust points">
+            <div><b>Founder-first</b> communication</div>
+            <div><b>Decision-focused</b> analysis</div>
+            <div><b>Practical</b>, not theoretical</div>
+          </div>
+        </section>
+
+        <aside class="hero-visual" aria-label="Visual">
+          <div class="visual-inner">
+            <div class="mini-card">
+              <p class="mini-title">What you should feel every month</p>
+              <p class="mini-text">
+                “I know what’s driving profit, where cash is going, and what decision matters next.”
+              </p>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <!-- Paper strip like your theme -->
+      <section class="paper" aria-label="Clarity statement">
+        <div class="paper-inner">
+          <h2>More clarity. Better profits. Stronger growth.</h2>
+          <p>
+            At GrowthMonk, we work with growing businesses to uncover hidden value, improve performance,
+            and make confident expansion decisions. Whether you are scaling up, restructuring, or preparing
+            for a major transaction, you get clear insights and practical direction—built around your business reality.
+            <span class="highlight">No confusion. No fluff. Just finance that makes decisions easier.</span>
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <!-- Why section -->
+    <section id="why" class="section">
+      <div class="container">
+        <h2 class="section-title">Why businesses choose GrowthMonk</h2>
+        <p class="section-sub">
+          Most businesses don’t stall because they lack effort. They stall because decisions get made with partial
+          information—unclear profitability, weak planning, or cash that behaves differently than the reports suggest.
+          GrowthMonk exists to fix that.
+        </p>
+
+        <div class="grid">
+          <div class="panel">
+            <div class="pad">
+              <ul class="bullets">
+                <li><b>Simple, data-driven</b> thinking—built for real operators.</li>
+                <li><b>Profit-first clarity</b> (not just revenue stories).</li>
+                <li><b>Clear financial direction</b> before critical decisions.</li>
+                <li><b>Founder-friendly</b> communication—no finance jargon loops.</li>
+              </ul>
+
+              <div class="stamp" aria-label="Highlights">
+                <div class="chip">Decision-ready reporting</div>
+                <div class="chip">Predictable cash visibility</div>
+                <div class="chip">Stronger margins</div>
+                <div class="chip">Confidence to scale</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="pad">
+              <div class="icon-row" aria-label="Value icons">
+                <div class="icon-card">
+                  <svg viewBox="0 0 24 24"><path d="M3 3h18v2H3V3zm2 5h14l-2 13H7L5 8zm3 2 1.1 9h5.8L16 10H8z"/></svg>
+                  <b>Data-driven</b>
+                  <span>Numbers that explain “why”, not just “what”.</span>
+                </div>
+                <div class="icon-card">
+                  <svg viewBox="0 0 24 24"><path d="M4 19h16v2H4v-2zM6 17V7h3v10H6zm5 0V3h3v14h-3zm5 0v-8h3v8h-3z"/></svg>
+                  <b>Profitability</b>
+                  <span>Identify margin leaks and fix them.</span>
+                </div>
+                <div class="icon-card">
+                  <svg viewBox="0 0 24 24"><path d="M12 2 1 7l11 5 9-4.09V17h2V7L12 2zm0 12L3 9v10l9 5 9-5V9l-9 5z"/></svg>
+                  <b>Strategy</b>
+                  <span>Clarity before expansion decisions.</span>
+                </div>
+                <div class="icon-card">
+                  <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zM8 11c1.66 0 3-1.34 3-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5C15 14.17 10.33 13 8 13zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h7v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                  <b>Founder-friendly</b>
+                  <span>Clear, fast answers—no noise.</span>
+                </div>
+              </div>
+
+              <div style="margin-top:16px;">
+                <a class="btn primary" href="#contact">Schedule a Consultation</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About strip (paper look again) -->
+    <section id="about" class="section">
+      <div class="container">
+        <section class="paper" aria-label="About GrowthMonk">
+          <div class="paper-inner">
+            <h2>About GrowthMonk</h2>
+            <p>
+              GrowthMonk was built with one clear belief: businesses don’t need more complex finance.
+              They need clearer decisions. We help leaders turn financial confusion into clarity—so you can grow
+              faster, safer, and more profitably.
+              <span class="highlight">If your decisions involve money, growth, or risk—GrowthMonk is relevant to you.</span>
+            </p>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- Resources (lightweight placeholder) -->
+    <section id="resources" class="section">
+      <div class="container">
+        <h2 class="section-title">Resources</h2>
+        <p class="section-sub">
+          Short, practical insights on profit, pricing, cash, and decision-making—written for business owners (not accountants).
+          <br><span style="color:rgba(231,228,219,.62)">Tip: link this section to your blog posts later.</span>
+        </p>
+
+        <div class="grid">
+          <div class="panel">
+            <div class="pad">
+              <p style="margin:0; color:rgba(231,228,219,.78); line-height:1.75;">
+                Coming soon: playbooks and checklists you can apply immediately—especially before a funding round,
+                expansion, or transaction conversation.
+              </p>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="pad">
+              <p style="margin:0 0 10px; color:rgba(231,228,219,.88); font-weight:700;">Want a starter checklist?</p>
+              <p style="margin:0 0 14px; color:rgba(231,228,219,.74); line-height:1.7;">
+                Get a simple “Monthly Finance Clarity” checklist to review cash, margins, and decision triggers.
+              </p>
+              <a class="btn" href="#contact">Request Checklist</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="section-title">Get in touch</h2>
+        <p class="section-sub">
+          Tell us what you’re trying to achieve and where things feel unclear. You’ll get a direct, practical next step—no sales pitch.
+        </p>
+
+        <div class="grid">
+          <div class="panel">
+            <div class="pad">
+              <!-- Simple form (front-end only). Replace action with your form endpoint. -->
+              <form action="#" method="post" style="display:grid; gap:12px;">
+                <div style="display:grid; gap:10px; grid-template-columns:1fr 1fr;">
+                  <label style="display:grid; gap:6px;">
+                    <span style="font-size:12px; color:rgba(231,228,219,.74);">Name</span>
+                    <input required name="name" placeholder="Your name"
+                      style="padding:12px 12px; border-radius:12px; border:1px solid rgba(201,168,90,.22);
+                        background: rgba(10,13,13,.55); color: var(--text); outline:none;" />
+                  </label>
+
+                  <label style="display:grid; gap:6px;">
+                    <span style="font-size:12px; color:rgba(231,228,219,.74);">Email</span>
+                    <input required type="email" name="email" placeholder="you@company.com"
+                      style="padding:12px 12px; border-radius:12px; border:1px solid rgba(201,168,90,.22);
+                        background: rgba(10,13,13,.55); color: var(--text); outline:none;" />
+                  </label>
+                </div>
+
+                <label style="display:grid; gap:6px;">
+                  <span style="font-size:12px; color:rgba(231,228,219,.74);">What do you need clarity on?</span>
+                  <textarea required name="message" rows="5" placeholder="Example: margins, pricing, cash visibility, expansion planning..."
+                    style="padding:12px 12px; border-radius:12px; border:1px solid rgba(201,168,90,.22);
+                      background: rgba(10,13,13,.55); color: var(--text); outline:none; resize:vertical;"></textarea>
+                </label>
+
+                <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+                  <button class="btn primary" type="submit" style="cursor:pointer;">Send</button>
+                  <span style="font-size:12px; color:rgba(231,228,219,.62);">
+                    Prefer email? Write to <a href="mailto:hello@growthmonk.in" style="text-decoration:underline;">hello@growthmonk.in</a>
+                  </span>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="pad">
+              <p style="margin:0 0 12px; font-weight:800; color:rgba(231,228,219,.92);">What happens next?</p>
+              <ul class="bullets">
+                <li>We understand your context and the decision you’re trying to make.</li>
+                <li>We identify the <b>real bottleneck</b> (profit, cash, structure, or timing).</li>
+                <li>You get a clear plan for the next step—built for action.</li>
+              </ul>
+              <div class="stamp">
+                <div class="chip">Confidential</div>
+                <div class="chip">Founder-friendly</div>
+                <div class="chip">Practical</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-wrap">
+        <div>© <span id="year"></span> GrowthMonk.in</div>
+        <div style="display:flex; gap:16px; flex-wrap:wrap;">
+          <a href="#about">About</a>
+          <a href="#resources">Resources</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
