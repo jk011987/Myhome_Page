@@ -1,1044 +1,256 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>growthmonk.in — Finance Leadership That Drives Business Decisions</title>
-
-  <!-- Fonts (close to your screenshots: elegant serif + clean sans) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      /* Palette sampled from your screenshots (dark olive/charcoal + warm cream + brass) */
-      --bg: #121412;
-      --panel: rgba(18,20,18,.78);
-      --panel-2: rgba(30,33,28,.72);
-      --text: #eadcd3;
-      --muted: rgba(234,220,211,.78);
-      --soft: rgba(234,220,211,.14);
-
-      --gold: #c8b7ab;        /* warm brass highlight from screenshots */
-      --gold-2: #b09b92;      /* muted brass */
-      --line: rgba(200,183,171,.22);
-
-      --shadow: 0 20px 60px rgba(0,0,0,.45);
-      --radius: 18px;
-      --radius-lg: 26px;
-
-      --serif: "Playfair Display", serif;
-      --sans: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-
-      --container: 1160px;
-    }
-
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      background: radial-gradient(1200px 900px at 15% 0%, rgba(200,183,171,.10), transparent 60%),
-                  radial-gradient(900px 700px at 85% 10%, rgba(200,183,171,.08), transparent 55%),
-                  var(--bg);
-      color:var(--text);
-      font-family:var(--sans);
-      line-height:1.55;
-      letter-spacing:.2px;
-    }
-
-    a{color:inherit; text-decoration:none}
-    .container{width:min(var(--container), calc(100% - 40px)); margin:0 auto}
-
-    /* Top grainy hero background (similar to your screenshots) */
-    .hero-wrap{
-      position:relative;
-      overflow:hidden;
-      border-bottom:1px solid var(--line);
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.80)),
-        radial-gradient(1200px 900px at 70% 30%, rgba(234,220,211,.12), transparent 55%),
-        radial-gradient(900px 650px at 85% 45%, rgba(200,183,171,.10), transparent 55%),
-        linear-gradient(120deg, rgba(41,43,38,.85), rgba(18,20,18,.85));
-    }
-
-    /* subtle “market chart” lines */
-    .hero-wrap::before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        linear-gradient(90deg, rgba(200,183,171,.08) 1px, transparent 1px) 0 0/120px 120px,
-        linear-gradient(0deg, rgba(200,183,171,.06) 1px, transparent 1px) 0 0/120px 120px,
-        radial-gradient(circle at 20% 20%, rgba(200,183,171,.10), transparent 55%),
-        radial-gradient(circle at 80% 25%, rgba(234,220,211,.08), transparent 55%);
-      opacity:.35;
-      pointer-events:none;
-      filter: blur(.2px);
-    }
-
-    /* ===== NAV ===== */
-    .nav{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(10px);
-      background: linear-gradient(180deg, rgba(18,20,18,.86), rgba(18,20,18,.60));
-      border-bottom:1px solid var(--line);
-    }
-    .nav-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
-      gap:18px;
-    }
-
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      min-width: 210px;
-    }
-    .logo{
-      width:38px; height:38px; border-radius:999px;
-      background: radial-gradient(circle at 35% 30%, rgba(234,220,211,.20), transparent 55%),
-                  linear-gradient(135deg, rgba(200,183,171,.38), rgba(200,183,171,.10));
-      border:1px solid rgba(200,183,171,.35);
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
-      display:grid; place-items:center;
-    }
-    .logo svg{width:22px; height:22px; opacity:.95}
-    .brand-title{
-      display:flex; flex-direction:column;
-      line-height:1.05;
-    }
-    .brand-title strong{
-      font-family:var(--serif);
-      font-size:18px;
-      letter-spacing:.4px;
-    }
-    .brand-title span{
-      font-size:12px;
-      color:var(--muted);
-      letter-spacing:.18em;
-      text-transform:lowercase;
-    }
-
-    .nav-links{
-      display:flex; align-items:center; gap:22px;
-      color:rgba(234,220,211,.90);
-      font-size:14px;
-    }
-    .nav-links a{opacity:.88}
-    .nav-links a:hover{opacity:1}
-    .nav-cta{
-      display:flex; align-items:center; gap:10px;
-    }
-
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      padding:10px 14px;
-      border-radius:999px;
-      border:1px solid rgba(200,183,171,.32);
-      background: rgba(200,183,171,.10);
-      color:var(--text);
-      font-weight:600;
-      font-size:14px;
-      transition: transform .15s ease, background .15s ease, border-color .15s ease;
-      white-space:nowrap;
-    }
-    .btn:hover{
-      transform: translateY(-1px);
-      background: rgba(200,183,171,.16);
-      border-color: rgba(200,183,171,.45);
-    }
-    .btn.primary{
-      background: linear-gradient(135deg, rgba(200,183,171,.32), rgba(200,183,171,.14));
-      border-color: rgba(200,183,171,.48);
-    }
-    .btn.primary:hover{
-      background: linear-gradient(135deg, rgba(200,183,171,.38), rgba(200,183,171,.18));
-    }
-
-    .burger{
-      display:none;
-      width:42px; height:42px;
-      border-radius:12px;
-      border:1px solid rgba(200,183,171,.25);
-      background: rgba(0,0,0,.20);
-      color:var(--text);
-    }
-
-    /* ===== HERO ===== */
-    .hero{
-      padding:54px 0 26px;
-      position:relative;
-    }
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:34px;
-      align-items:center;
-      padding: 10px 0 34px;
-    }
-
-    .kicker{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid rgba(200,183,171,.22);
-      background: rgba(0,0,0,.18);
-      color:rgba(234,220,211,.92);
-      font-size:13px;
-    }
-    .dot{
-      width:8px; height:8px; border-radius:999px;
-      background: rgba(200,183,171,.9);
-      box-shadow: 0 0 0 6px rgba(200,183,171,.10);
-    }
-
-    h1{
-      font-family:var(--serif);
-      font-size: clamp(34px, 4.2vw, 54px);
-      line-height:1.05;
-      margin:16px 0 14px;
-      letter-spacing:.2px;
-    }
-    .hero p{
-      color:rgba(234,220,211,.82);
-      font-size:16px;
-      max-width: 56ch;
-      margin:0 0 18px;
-    }
-
-    .hero-actions{
-      display:flex; flex-wrap:wrap;
-      gap:12px;
-      margin-top:16px;
-    }
-
-    .proof{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap:14px;
-      margin-top:24px;
-    }
-    .proof .pill{
-      border:1px solid rgba(200,183,171,.18);
-      background: rgba(0,0,0,.18);
-      border-radius: 16px;
-      padding:12px 12px;
-      color:rgba(234,220,211,.86);
-      font-size:13px;
-    }
-    .proof .pill b{
-      display:block;
-      font-size:14px;
-      color:rgba(234,220,211,.95);
-      margin-bottom:2px;
-    }
-
-    .hero-card{
-      border-radius: var(--radius-lg);
-      background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.15));
-      border:1px solid rgba(200,183,171,.22);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-      min-height: 360px;
-    }
-    .hero-card::before{
-      content:"";
-      position:absolute; inset:0;
-      background:
-        radial-gradient(700px 450px at 80% 20%, rgba(234,220,211,.16), transparent 60%),
-        radial-gradient(600px 400px at 30% 70%, rgba(200,183,171,.10), transparent 55%),
-        linear-gradient(135deg, rgba(44,41,35,.95), rgba(18,20,18,.95));
-      opacity:1;
-    }
-    .hero-card::after{
-      content:"";
-      position:absolute; inset:0;
-      background:
-        linear-gradient(0deg, rgba(0,0,0,.55), transparent 55%),
-        linear-gradient(90deg, rgba(0,0,0,.35), transparent 50%);
-      opacity:.85;
-    }
-    .hero-card-inner{
-      position:relative;
-      padding:22px;
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-end;
-      height:100%;
-      gap:10px;
-    }
-    .mini-title{
-      font-family:var(--serif);
-      font-size:18px;
-      margin:0;
-    }
-    .mini-text{
-      margin:0;
-      color:rgba(234,220,211,.78);
-      font-size:14px;
-    }
-    .mini-metrics{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap:10px;
-      margin-top:10px;
-    }
-    .metric{
-      border:1px solid rgba(200,183,171,.18);
-      background: rgba(0,0,0,.22);
-      border-radius: 16px;
-      padding:12px;
-    }
-    .metric b{display:block; font-size:16px}
-    .metric span{color:rgba(234,220,211,.75); font-size:12px}
-
-    /* ===== SECTIONS ===== */
-    section{padding:58px 0}
-    .section-head{
-      display:flex; align-items:flex-end; justify-content:space-between;
-      gap:18px;
-      margin-bottom:18px;
-    }
-    .section-head h2{
-      font-family:var(--serif);
-      font-size: clamp(26px, 2.5vw, 34px);
-      line-height:1.1;
-      margin:0;
-    }
-    .section-head p{
-      margin:0;
-      color:rgba(234,220,211,.78);
-      max-width:62ch;
-      font-size:14px;
-    }
-
-    .panel{
-      border-radius: var(--radius-lg);
-      border:1px solid rgba(200,183,171,.18);
-      background: linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.10));
-      box-shadow: 0 18px 55px rgba(0,0,0,.35);
-      overflow:hidden;
-    }
-
-    .why{
-      padding-top:42px;
-    }
-    .why-inner{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:18px;
-      padding:22px;
-      background:
-        radial-gradient(900px 600px at 10% 0%, rgba(200,183,171,.10), transparent 60%),
-        radial-gradient(900px 650px at 90% 20%, rgba(234,220,211,.08), transparent 60%),
-        rgba(0,0,0,.18);
-    }
-    .why-box{
-      border:1px solid rgba(200,183,171,.18);
-      background: rgba(0,0,0,.18);
-      border-radius: 18px;
-      padding:18px;
-    }
-    .why-box h3{
-      margin:0 0 8px;
-      font-family:var(--serif);
-      font-size:18px;
-    }
-    .why-box ul{
-      margin:0;
-      padding-left:18px;
-      color:rgba(234,220,211,.82);
-    }
-    .why-box li{margin:8px 0}
-
-    /* ===== SERVICES ===== */
-    .cards{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap:18px;
-    }
-    .card{
-      border-radius: var(--radius-lg);
-      border:1px solid rgba(200,183,171,.18);
-      background:
-        radial-gradient(700px 450px at 90% 10%, rgba(200,183,171,.12), transparent 60%),
-        rgba(0,0,0,.18);
-      box-shadow: 0 18px 55px rgba(0,0,0,.35);
-      padding:22px;
-      position:relative;
-      overflow:hidden;
-    }
-    .card-top{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:14px;
-      margin-bottom:10px;
-    }
-    .icon{
-      width:42px; height:42px; border-radius:14px;
-      border:1px solid rgba(200,183,171,.28);
-      background: rgba(200,183,171,.10);
-      display:grid; place-items:center;
-      flex:0 0 auto;
-    }
-    .icon svg{width:22px;height:22px;opacity:.95}
-    .card h3{
-      margin:0;
-      font-family:var(--serif);
-      font-size:20px;
-      line-height:1.15;
-    }
-    .card p{
-      margin:10px 0 12px;
-      color:rgba(234,220,211,.80);
-      font-size:14px;
-    }
-    .checklist{
-      margin:0;
-      padding:0;
-      list-style:none;
-      display:grid;
-      gap:10px;
-    }
-    .checklist li{
-      display:flex;
-      align-items:flex-start;
-      gap:10px;
-      color:rgba(234,220,211,.86);
-      font-size:14px;
-    }
-    .tick{
-      width:20px; height:20px;
-      border-radius:6px;
-      border:1px solid rgba(200,183,171,.28);
-      background: rgba(200,183,171,.10);
-      display:grid; place-items:center;
-      margin-top:2px;
-      flex:0 0 auto;
-    }
-    .tick svg{width:14px;height:14px}
-
-    /* ===== ABOUT / COPY ===== */
-    .split{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:18px;
-    }
-    .copy{
-      padding:22px;
-    }
-    .copy h3{
-      margin:0 0 10px;
-      font-family:var(--serif);
-      font-size:22px;
-      line-height:1.2;
-    }
-    .copy p{
-      margin:0 0 10px;
-      color:rgba(234,220,211,.82);
-      font-size:14px;
-    }
-    .quote{
-      border-left:2px solid rgba(200,183,171,.55);
-      padding-left:14px;
-      margin-top:14px;
-      color:rgba(234,220,211,.90);
-    }
-    .chips{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:14px;
-    }
-    .chip{
-      border:1px solid rgba(200,183,171,.18);
-      background: rgba(0,0,0,.18);
-      padding:8px 10px;
-      border-radius:999px;
-      font-size:13px;
-      color:rgba(234,220,211,.86);
-    }
-
-    /* ===== PROCESS ===== */
-    .steps{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap:14px;
-    }
-    .step{
-      padding:18px;
-      border-radius: 20px;
-      border:1px solid rgba(200,183,171,.18);
-      background: rgba(0,0,0,.18);
-    }
-    .step b{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      font-family:var(--serif);
-      font-size:18px;
-      margin-bottom:6px;
-    }
-    .step .n{
-      width:30px; height:30px;
-      border-radius:10px;
-      border:1px solid rgba(200,183,171,.28);
-      background: rgba(200,183,171,.10);
-      display:grid; place-items:center;
-      font-family:var(--sans);
-      font-weight:700;
-      font-size:13px;
-    }
-    .step p{margin:0; color:rgba(234,220,211,.80); font-size:14px}
-
-    /* ===== TESTIMONIALS ===== */
-    .testimonials{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap:14px;
-    }
-    .t{
-      border-radius: 20px;
-      border:1px solid rgba(200,183,171,.18);
-      background: rgba(0,0,0,.18);
-      padding:18px;
-    }
-    .t p{margin:0 0 12px; color:rgba(234,220,211,.82); font-size:14px}
-    .t .who{display:flex; flex-direction:column; gap:2px}
-    .t .who b{font-size:13px}
-    .t .who span{font-size:12px; color:rgba(234,220,211,.70)}
-
-    /* ===== CTA ===== */
-    .cta{
-      padding:34px 0 70px;
-    }
-    .cta-inner{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
-      padding:22px;
-      border-radius: var(--radius-lg);
-      border:1px solid rgba(200,183,171,.22);
-      background:
-        radial-gradient(900px 500px at 0% 0%, rgba(200,183,171,.14), transparent 60%),
-        radial-gradient(900px 550px at 100% 20%, rgba(234,220,211,.10), transparent 60%),
-        rgba(0,0,0,.20);
-      box-shadow: var(--shadow);
-    }
-    .cta h3{
-      margin:0;
-      font-family:var(--serif);
-      font-size:24px;
-      line-height:1.1;
-    }
-    .cta p{margin:6px 0 0; color:rgba(234,220,211,.80); font-size:14px}
-
-    /* ===== FOOTER ===== */
-    footer{
-      border-top:1px solid var(--line);
-      background: rgba(0,0,0,.22);
-      padding:28px 0;
-    }
-    .footer-grid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr .8fr;
-      gap:18px;
-      align-items:start;
-    }
-    .footer-grid h4{
-      margin:0 0 8px;
-      font-family:var(--serif);
-      font-size:16px;
-    }
-    .footer-grid a, .footer-grid p{
-      color:rgba(234,220,211,.78);
-      font-size:13px;
-      margin:0;
-    }
-    .footer-grid a:hover{color:rgba(234,220,211,.95)}
-    .footnote{
-      margin-top:18px;
-      color:rgba(234,220,211,.55);
-      font-size:12px;
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 980px){
-      .hero-grid{grid-template-columns:1fr; }
-      .hero-card{min-height: 320px}
-      .cards{grid-template-columns:1fr}
-      .split{grid-template-columns:1fr}
-      .steps{grid-template-columns:1fr}
-      .testimonials{grid-template-columns:1fr}
-      .why-inner{grid-template-columns:1fr}
-      .nav-links{display:none}
-      .burger{display:inline-grid; place-items:center}
-      .nav-links.mobile{
-        display:flex;
-        flex-direction:column;
-        align-items:flex-start;
-        gap:14px;
-        padding:12px 0 18px;
-      }
-      .nav-inner{align-items:flex-start}
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GrowthMonk | Finance Leadership That Drives Business Decisions</title>
+  <meta name="description" content="CFO-level financial clarity for founders and business owners. Cash visibility, profitability control, and decision-ready finance."/>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
-  <!-- ===== NAV ===== -->
-  <header class="nav">
-    <div class="container">
-      <div class="nav-inner">
-        <a class="brand" href="#top" aria-label="growthmonk.in home">
-          <div class="logo" aria-hidden="true">
-            <!-- Minimal monk-like glyph (replace with your real logo file when ready) -->
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M12 11.2c2.2 0 4-1.55 4-3.45S14.2 4.3 12 4.3 8 5.85 8 7.75s1.8 3.45 4 3.45Z" stroke="rgba(234,220,211,.95)" stroke-width="1.4"/>
-              <path d="M6.2 20.2c.8-4 3.2-6 5.8-6s5 2 5.8 6" stroke="rgba(234,220,211,.95)" stroke-width="1.4" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="brand-title">
-            <strong>GrowthMonk</strong>
-            <span>growthmonk.in</span>
-          </div>
-        </a>
 
-        <nav class="nav-links" id="navLinks">
-          <a href="#services">Services</a>
-          <a href="#about">About</a>
-          <a href="#process">How it works</a>
-          <a href="#resources">Resources</a>
-          <a href="#contact">Contact</a>
-        </nav>
+<header>
+  <div class="container">
+    <div class="bar">
+      <a class="brand" href="index.html" aria-label="GrowthMonk Home">
+        <span class="logo"><img src="assets/logo.svg" alt="GrowthMonk logo" /></span>
+        <span class="name serif">GrowthMonk</span>
+      </a>
 
-        <div class="nav-cta">
-          <a class="btn" href="#contact">Get in Touch</a>
-          <a class="btn primary" href="#contact">Schedule a Consultation</a>
-          <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
-            ☰
-          </button>
-        </div>
-      </div>
-
-      <!-- mobile menu -->
-      <nav class="nav-links mobile" id="mobileMenu" style="display:none;">
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#process">How it works</a>
-        <a href="#resources">Resources</a>
-        <a href="#contact">Contact</a>
+      <nav aria-label="Primary">
+        <a class="active" href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="services.html">Services</a>
+        <a href="career.html">Career</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html">Contact</a>
       </nav>
-    </div>
-  </header>
 
-  <!-- ===== HERO ===== -->
-  <div class="hero-wrap" id="top">
-    <div class="container hero">
-      <div class="hero-grid">
-        <div>
-          <div class="kicker"><span class="dot"></span> Finance leadership for growth-stage companies</div>
-
-          <h1>Finance Leadership That Drives Business Decisions</h1>
-
-          <p>
-            Most businesses don’t fail because they lack sales — they fail because they lack clarity:
-            clarity on cash, profitability, and what’s leaking right now.
-            GrowthMonk turns finance into a growth tool, not a year-end formality.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn primary" href="#contact">Get Clarity</a>
-            <a class="btn" href="#services">Explore Services</a>
-          </div>
-
-          <div class="proof" aria-label="Highlights">
-            <div class="pill"><b>Decision-ready finance</b> Clean reporting + meaningful metrics</div>
-            <div class="pill"><b>Founder-friendly</b> No jargon, only actions</div>
-            <div class="pill"><b>CFO-level ownership</b> Structure, visibility, control</div>
-          </div>
-        </div>
-
-        <aside class="hero-card" aria-label="Summary card">
-          <div class="hero-card-inner">
-            <p class="mini-title">Your numbers should answer questions — not create confusion.</p>
-            <p class="mini-text">
-              If reports arrive late, cash feels uncertain, or profitability looks “fine” but the bank says otherwise,
-              we’ll fix the system behind the numbers.
-            </p>
-
-            <div class="mini-metrics">
-              <div class="metric"><b>Cash clarity</b><span>Know what’s coming + going</span></div>
-              <div class="metric"><b>True margins</b><span>Spot hidden profit leaks</span></div>
-              <div class="metric"><b>Forecasting</b><span>Replace assumptions with visibility</span></div>
-              <div class="metric"><b>Growth roadmap</b><span>Plan expansion with control</span></div>
-            </div>
-          </div>
-        </aside>
+      <div class="header-cta">
+        <a class="btn primary" href="contact.html">Get in Touch</a>
+        <button class="menuBtn" data-menu aria-expanded="false" aria-label="Open menu">☰</button>
       </div>
+    </div>
+
+    <div class="mobileNav" data-mobile-nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="services.html">Services</a>
+      <a href="career.html">Career</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html">Contact</a>
     </div>
   </div>
+</header>
 
-  <!-- ===== WHY ===== -->
-  <section class="why">
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
     <div class="container">
-      <div class="section-head">
-        <div>
-          <h2>Why Businesses Choose GrowthMonk</h2>
-          <p>Most businesses don’t fail because they lack effort. They fail because the financial system doesn’t give clear direction.</p>
-        </div>
-        <a class="btn" href="#contact">Talk to us</a>
-      </div>
+      <div class="heroCard">
+        <div class="overlayGraph"></div>
+        <div class="grain"></div>
 
-      <div class="panel">
-        <div class="why-inner">
-          <div class="why-box">
-            <h3>Problems we solve</h3>
-            <ul>
-              <li>Profits not growing despite increasing revenue</li>
-              <li>Confusing pricing decisions</li>
-              <li>Cash flow pressure and uncertainty</li>
-              <li>Expansion, funding, or acquisition decisions without a clear view</li>
-            </ul>
-          </div>
-          <div class="why-box">
-            <h3>What you get</h3>
-            <ul>
-              <li>Simple, data-driven advice (not theory)</li>
-              <li>Clear financial direction and clean metrics</li>
-              <li>Focus on profit, not just revenue</li>
-              <li>Founder-friendly approach — no finance confusion</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        <div class="heroGrid">
+          <div class="copy">
+            <span class="kicker"><span class="dot"></span> Premium finance leadership for growth-stage businesses</span>
 
-  <!-- ===== SERVICES ===== -->
-  <section id="services">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h2>Our Services</h2>
-          <p>Practical financial strategies that drive profitable growth — built for founders, CEOs, and business owners who want clarity before critical decisions.</p>
-        </div>
-      </div>
+            <h1 class="serif">Finance Leadership That Drives Business Decisions</h1>
 
-      <div class="cards">
-        <article class="card">
-          <div class="card-top">
-            <div>
-              <h3>Value Creation &amp; Performance Optimization</h3>
-              <p>Maximize profitability and drive sustainable growth with financial strategies tailored to your business.</p>
-            </div>
-            <div class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M4 18h16" stroke="rgba(234,220,211,.95)" stroke-width="1.6" stroke-linecap="round"/>
-                <path d="M6 16V10" stroke="rgba(234,220,211,.95)" stroke-width="1.6" stroke-linecap="round"/>
-                <path d="M10 16V6" stroke="rgba(234,220,211,.95)" stroke-width="1.6" stroke-linecap="round"/>
-                <path d="M14 16v-4" stroke="rgba(234,220,211,.95)" stroke-width="1.6" stroke-linecap="round"/>
-                <path d="M18 16V8" stroke="rgba(234,220,211,.95)" stroke-width="1.6" stroke-linecap="round"/>
-              </svg>
-            </div>
-          </div>
-
-          <ul class="checklist">
-            <li><span class="tick" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="rgba(234,220,211,.95)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>Pricing strategy</li>
-            <li><span class="tick" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="rgba(234,220,211,.95)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>Profitability analysis (hidden margin opportunities)</li>
-            <li><span class="tick" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="rgba(234,220,211,.95)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>Pricing optimization</li>
-            <li><span class="tick" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="rgba(234,220,211,.95)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>Scenario planning &amp; scaling decisions</li>
-          </ul>
-
-          <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
-            <a class="btn" href="#contact">Learn More</a>
-            <a class="btn primary" href="#contact">Schedule a Consultation</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card-top">
-            <div>
-              <h3>Capital &amp; Transaction Advisory</h3>
-              <p>Navigate complex transactions and optimize your capital structure with experienced, decision-first support.</p>
-            </div>
-            <div class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M7 7h10v4H7V7Z" stroke="rgba(234,220,211,.95)" stroke-width="1.6"/>
-                <path d="M6 11h12v10H6V11Z" stroke="rgba(234,220,211,.95)" stroke-width="1.6"/>
-                <path d="M10 15h4" stroke="rgba(234,220,211,.95)" stroke-width="1.6" stroke-linecap="round"/>
-              </svg>
-            </div>
-          </div>
-
-          <ul class="checklist">
-            <li><span class="tick" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="rgba(234,220,211,.95)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>Cash flow planning (what’s coming / going / how long it lasts)</li>
-            <li><span class="tick" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="rgba(234,220,211,.95)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>Capital structure (debt vs equity)</li>
-            <li><span class="tick" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="rgba(234,220,211,.95)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>Debt syndication &amp; fundraising support</li>
-            <li><span class="tick" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="rgba(234,220,211,.95)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>Mergers &amp; acquisitions decision support</li>
-          </ul>
-
-          <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
-            <a class="btn" href="#contact">Learn More</a>
-            <a class="btn primary" href="#contact">Get Clarity</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== ABOUT ===== -->
-  <section id="about">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h2>About GrowthMonk</h2>
-          <p>Financial clarity for confident business growth. We help founders and business owners turn financial confusion into clarity.</p>
-        </div>
-      </div>
-
-      <div class="split">
-        <div class="panel copy">
-          <h3>Not just “accounts”. Not just “advice”. Actual CFO-level ownership.</h3>
-          <p>
-            Some firms deliver reports. We deliver <b>decision-ready finance</b>.
-            We work like an internal finance leader — with the discipline of a CFO and the mindset of a growth partner.
-          </p>
-          <p>
-            No generic cost-cutting. No spreadsheet overload. No jargon.
-            We focus on the numbers that move the company: <b>cash, margins, pricing, and growth decisions</b>.
-          </p>
-          <p class="quote">
-            More clarity. Better profits. Stronger growth.
-          </p>
-
-          <div class="chips" aria-label="Who we work with">
-            <span class="chip">Startup &amp; growth-stage founders</span>
-            <span class="chip">SME &amp; mid-sized business owners</span>
-            <span class="chip">Family-run businesses</span>
-            <span class="chip">CEOs planning expansion / funding / acquisition</span>
-          </div>
-        </div>
-
-        <div class="panel copy">
-          <h3>Built for growth-stage companies that want real control</h3>
-          <p>
-            If your reports arrive late, your cash position feels uncertain, or profitability looks “fine”
-            but the bank balance says otherwise — you’re not alone.
-          </p>
-          <p>
-            We build the structure behind the numbers: clean reporting, strong forecasting, and a roadmap
-            that supports scale with discipline, visibility, and control.
-          </p>
-
-          <div class="steps" style="margin-top:14px;">
-            <div class="step">
-              <b><span class="n">1</span> Diagnose</b>
-              <p>Find where cash gets stuck, margins leak, and reporting breaks down.</p>
-            </div>
-            <div class="step">
-              <b><span class="n">2</span> Build</b>
-              <p>Set up metrics, forecasting, and decision dashboards that stay current.</p>
-            </div>
-            <div class="step">
-              <b><span class="n">3</span> Drive</b>
-              <p>Use finance to improve pricing, profitability, and confident expansion.</p>
-            </div>
-          </div>
-
-          <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
-            <a class="btn primary" href="#contact">Schedule a Consultation</a>
-            <a class="btn" href="#services">See Services</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== PROCESS ===== -->
-  <section id="process">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h2>How We Help Businesses Grow</h2>
-          <p>Structured planning instead of reactive firefighting — so growth stops feeling chaotic.</p>
-        </div>
-      </div>
-
-      <div class="panel" style="padding:22px;">
-        <div class="steps">
-          <div class="step">
-            <b><span class="n">1</span> Visibility</b>
-            <p>Clean reporting that tells you what’s working, what’s leaking, and what needs to change now.</p>
-          </div>
-          <div class="step">
-            <b><span class="n">2</span> Predictability</b>
-            <p>Cash flow planning and forecasting so you can move without guessing.</p>
-          </div>
-          <div class="step">
-            <b><span class="n">3</span> Confident moves</b>
-            <p>Pricing, capital, and expansion decisions backed by clear metrics and true margins.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== RESOURCES (placeholder section) ===== -->
-  <section id="resources">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h2>Resources</h2>
-          <p>Founder-friendly insights on pricing, profitability, and cash control (add your blogs/lead magnets here).</p>
-        </div>
-      </div>
-
-      <div class="panel" style="padding:22px;">
-        <div class="testimonials">
-          <div class="t">
-            <p><b>Pricing Clarity Checklist</b><br>Stop underpricing and protect margins with a simple decision framework.</p>
-            <div class="who"><b>Free download</b><span>PDF / Notion / Google Doc</span></div>
-          </div>
-          <div class="t">
-            <p><b>Cash Flow Planning Template</b><br>Know where cash is coming from, where it’s going, and how long it lasts.</p>
-            <div class="who"><b>Free download</b><span>Sheet template</span></div>
-          </div>
-          <div class="t">
-            <p><b>Profit Leaks Audit</b><br>Find hidden margin opportunities across products, customers, and operations.</p>
-            <div class="who"><b>Quick guide</b><span>10-minute audit</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CTA / CONTACT ===== -->
-  <section class="cta" id="contact">
-    <div class="container">
-      <div class="cta-inner">
-        <div>
-          <h3>Want clarity on cash, profitability, and the next move?</h3>
-          <p>Share a bit about your business, and we’ll recommend the right next step.</p>
-        </div>
-        <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;">
-          <a class="btn" href="mailto:hello@growthmonk.in">Email us</a>
-          <a class="btn primary" href="#contactForm">Schedule a Consultation</a>
-        </div>
-      </div>
-
-      <!-- Simple on-page form (wireframe). Replace action with your form endpoint. -->
-      <div class="panel" id="contactForm" style="margin-top:18px; padding:22px;">
-        <form style="display:grid; gap:12px;" action="#" method="post">
-          <div style="display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px;">
-            <label style="display:grid; gap:6px;">
-              <span style="font-size:13px; color:rgba(234,220,211,.80)">Name</span>
-              <input required name="name" placeholder="Your name"
-                style="padding:12px 12px; border-radius:14px; border:1px solid rgba(200,183,171,.22); background: rgba(0,0,0,.20); color: var(--text); outline:none;">
-            </label>
-            <label style="display:grid; gap:6px;">
-              <span style="font-size:13px; color:rgba(234,220,211,.80)">Email</span>
-              <input required type="email" name="email" placeholder="you@company.com"
-                style="padding:12px 12px; border-radius:14px; border:1px solid rgba(200,183,171,.22); background: rgba(0,0,0,.20); color: var(--text); outline:none;">
-            </label>
-          </div>
-
-          <label style="display:grid; gap:6px;">
-            <span style="font-size:13px; color:rgba(234,220,211,.80)">What do you need clarity on?</span>
-            <textarea required name="message" rows="4" placeholder="Cash flow, pricing, profitability, fundraising, expansion..."
-              style="padding:12px 12px; border-radius:14px; border:1px solid rgba(200,183,171,.22); background: rgba(0,0,0,.20); color: var(--text); outline:none; resize:vertical;"></textarea>
-          </label>
-
-          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-            <p style="margin:0; color:rgba(234,220,211,.62); font-size:12px;">
-              By submitting, you agree to be contacted by GrowthMonk.
+            <p>
+              Most businesses don’t fail because they lack sales. They fail because they lack clarity —
+              on cash, on profitability, and on what’s working, what’s leaking, and what needs to change now.
             </p>
-            <button class="btn primary" type="submit">Send</button>
+
+            <div class="actions">
+              <a class="btn primary" href="contact.html">Schedule a Consultation</a>
+              <a class="btn ghost" href="services.html">Explore Services</a>
+            </div>
+
+            <div class="stamp">
+              <img src="assets/logo.svg" alt="" />
+              <span>Boardroom-level clarity. Founder-friendly execution.</span>
+            </div>
           </div>
-        </form>
+
+          <div class="img" aria-label="Desk background image"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="waveWrap">
+      <div class="goldLine"></div>
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,72 C240,120 420,120 720,78 C1020,36 1180,30 1440,60 L1440,120 L0,120 Z" fill="#e9e0cf"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- PAPER INTRO -->
+  <section class="paperSection">
+    <div class="container inner">
+      <div class="sectionTitle">
+        <img class="seal" src="assets/logo.svg" alt="" />
+        <h2 class="serif">Your Numbers Should Answer Questions — Not Create Confusion</h2>
+        <p>
+          If reports arrive late, cash feels uncertain, or profitability looks “fine” but the bank balance says otherwise —
+          you’re not alone. Many growing companies run with incomplete reporting, weak forecasting, and decisions made on assumptions.
+        </p>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="twoCol">
+        <div>
+          <h3 class="serif" style="margin:0;color:#1f1a12;">Built for growth-stage companies that want real control</h3>
+          <p style="margin:10px 0 0;color:rgba(27,26,22,.82);">
+            GrowthMonk is designed for companies that are past the early hustle phase — and now need structured financial leadership.
+            The goal is simple: make your financial system strong enough to support scale.
+          </p>
+          <div class="callout" style="color:rgba(27,26,22,.90);background:rgba(199,163,90,.10);border-color:rgba(199,163,90,.25);">
+            Knowing true margins • Understanding where cash gets stuck • Tracking performance with clean metrics • Building a financial roadmap
+          </div>
+        </div>
+
+        <div>
+          <h3 class="serif" style="margin:0;color:#1f1a12;">Not just “accounts”. Not just “advice”.</h3>
+          <p style="margin:10px 0 0;color:rgba(27,26,22,.82);">
+            Some firms deliver reports. We deliver decision-ready finance — with CFO discipline and a growth partner mindset.
+            No jargon. No generic cost-cutting. Just the numbers that move the company.
+          </p>
+          <div class="actions" style="margin-top:16px;">
+            <a class="btn primary" href="contact.html">Get Clarity</a>
+            <a class="btn" href="about.html">About GrowthMonk</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="cardGrid" style="margin-top:34px;">
+        <div class="panel">
+          <div class="head">
+            <div>
+              <h3 class="serif">Value Creation &amp; Performance Optimization</h3>
+              <p>Maximize profitability and drive sustainable growth with strategies tailored to your business.</p>
+            </div>
+            <div class="iconBox" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 15l3-3 3 2 5-6"/></svg>
+            </div>
+          </div>
+
+          <ul class="checks">
+            <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Pricing strategy</li>
+            <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Profitability analysis</li>
+            <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Pricing optimization</li>
+            <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Scenario planning</li>
+            <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Expansion &amp; scaling decisions</li>
+          </ul>
+
+          <div class="foot">
+            <a class="btn" href="services.html#value">Learn More</a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="head">
+            <div>
+              <h3 class="serif">Capital &amp; Transaction Advisory</h3>
+              <p>Navigate complex transactions and optimize capital structure with calm, clear guidance.</p>
+            </div>
+            <div class="iconBox" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M20 7H4m16 0v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7m16 0l-2-3H6L4 7"/><path d="M12 11v6"/></svg>
+            </div>
+          </div>
+
+          <ul class="checks">
+            <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Cash flow planning</li>
+            <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Capital structure (debt vs. equity)</li>
+            <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Debt syndication</li>
+            <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Mergers &amp; acquisitions</li>
+          </ul>
+
+          <div class="foot">
+            <a class="btn" href="services.html#capital">Learn More</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
-            <div class="logo" aria-hidden="true" style="width:34px;height:34px;">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M12 11.2c2.2 0 4-1.55 4-3.45S14.2 4.3 12 4.3 8 5.85 8 7.75s1.8 3.45 4 3.45Z" stroke="rgba(234,220,211,.95)" stroke-width="1.4"/>
-                <path d="M6.2 20.2c.8-4 3.2-6 5.8-6s5 2 5.8 6" stroke="rgba(234,220,211,.95)" stroke-width="1.4" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div>
-              <div style="font-family:var(--serif); font-size:16px;">GrowthMonk</div>
-              <div style="font-size:12px; color:rgba(234,220,211,.60); letter-spacing:.12em; text-transform:lowercase;">growthmonk.in</div>
-            </div>
-          </div>
-          <p>Finance that creates confidence — for founders who want control, not chaos.</p>
-        </div>
+  <!-- WHY CHOOSE -->
+  <section class="darkSection">
+    <div class="container inner">
+      <h2 class="serif">Why Businesses Choose GrowthMonk</h2>
+      <p>Most businesses don’t fail because they lack effort. They fail because of wrong pricing, poor cash flow planning, or unclear growth decisions. <span style="color:rgba(199,163,90,.95);font-weight:700;">We fix that.</span></p>
 
-        <div>
-          <h4>Company</h4>
-          <p><a href="#about">About</a></p>
-          <p><a href="#services">Services</a></p>
-          <p><a href="#resources">Resources</a></p>
-        </div>
-
-        <div>
-          <h4>Contact</h4>
-          <p><a href="mailto:hello@growthmonk.in">hello@growthmonk.in</a></p>
-          <p><a href="#contact">Schedule a consultation</a></p>
-          <p><a href="#top">Back to top</a></p>
-        </div>
+      <div class="twoCol">
+        <ul class="bullets">
+          <li><span class="mark"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Simple, data-driven advice</li>
+          <li><span class="mark"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Focus on profit, not just revenue</li>
+        </ul>
+        <ul class="bullets">
+          <li><span class="mark"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Clear financial direction</li>
+          <li><span class="mark"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Founder-friendly approach (no finance confusion)</li>
+        </ul>
       </div>
 
-      <div class="footnote">
-        <span>© <span id="year"></span> GrowthMonk. All rights reserved.</span>
-        <span>Designed in the GrowthMonk palette (olive / brass / cream).</span>
+      <div class="callout">
+        Think of us as your strategic finance partner — not just an advisor.
+      </div>
+
+      <div class="actions" style="margin-top:16px;">
+        <a class="btn primary" href="contact.html">Schedule a Consultation</a>
+      </div>
+
+      <div class="iconRow">
+        <div class="pillar">
+          <svg viewBox="0 0 24 24"><path d="M4 20h16M6 16h12M8 12h8M10 8h4"/><path d="M12 4v16"/></svg>
+          <span>Data-Driven Insights</span>
+        </div>
+        <div class="pillar">
+          <svg viewBox="0 0 24 24"><path d="M12 20V4"/><path d="M7 9l5-5 5 5"/><path d="M7 15h10"/></svg>
+          <span>Improved Profitability</span>
+        </div>
+        <div class="pillar">
+          <svg viewBox="0 0 24 24"><path d="M3 12h18"/><path d="M7 8l-4 4 4 4"/><path d="M17 8l4 4-4 4"/></svg>
+          <span>Strategic Guidance</span>
+        </div>
+        <div class="pillar">
+          <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 3-1.34 3-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3Z"/><path d="M8 11c1.66 0 3-1.34 3-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3Z"/><path d="M5 19c0-2.2 1.8-4 4-4"/><path d="M19 19c0-2.2-1.8-4-4-4"/></svg>
+          <span>Founder-Friendly</span>
+        </div>
       </div>
     </div>
-  </footer>
+  </section>
 
-  <script>
-    // Mobile menu toggle
-    const burger = document.getElementById('burger');
-    const menu = document.getElementById('mobileMenu');
-    burger?.addEventListener('click', () => {
-      const open = menu.style.display !== 'none';
-      menu.style.display = open ? 'none' : 'flex';
-      burger.setAttribute('aria-expanded', String(!open));
-    });
+</main>
 
-    // Footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+<footer>
+  <div class="container">
+    <div class="footerGrid">
+      <div>
+        <h4 class="serif">GrowthMonk</h4>
+        <p>Finance that creates confidence — visibility, control, and decision-ready leadership for growth-stage companies.</p>
+      </div>
+      <div>
+        <h4 class="serif">Company</h4>
+        <p><a href="about.html">About</a><br/>
+           <a href="services.html">Services</a><br/>
+           <a href="career.html">Career</a><br/>
+           <a href="resources.html">Resources</a></p>
+      </div>
+      <div>
+        <h4 class="serif">Contact</h4>
+        <p><a href="contact.html">Get in Touch</a><br/>
+          hello@growthmonk.in<br/>
+          +91 00 0000 0000</p>
+      </div>
+    </div>
+    <div class="subfoot">© <span id="y"></span> GrowthMonk. All rights reserved. Domain: growthmonk.in</div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>document.getElementById("y").textContent = new Date().getFullYear();</script>
 </body>
 </html>
